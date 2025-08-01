@@ -1,12 +1,36 @@
+
+:root {
+    --primary-color: #2d5a27;
+    --secondary-color: #4a7c59;
+    --accent-color: #8fbc8f;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
     overflow-x: hidden;
 }
 
 .container-fluid {
     padding: 20px;
+}
+
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
 }
 
 .phone-container {
@@ -64,9 +88,16 @@ body {
 .star-3 { bottom: 150px; right: 30px; }
 .star-4 { bottom: 200px; left: 40px; }
 
+/*         WELCOME PAGE          */
+
 .welcome-section {
     text-align: center;
     margin-bottom: 40px;
+}
+
+.welcome {
+    width: 200px;
+    height: 200px;
 }
 
 .illustration-placeholder {
@@ -89,7 +120,7 @@ body {
 .welcome-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2d5a27;
+    color: var(--primary-color);
     margin-bottom: 15px;
 }
 
@@ -100,8 +131,9 @@ body {
     margin-bottom: 30px;
 }
 
+/*     BUTTONS       */
 .btn-primary-green {
-    background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
     border-radius: 25px;
     padding: 12px 0;
@@ -115,26 +147,27 @@ body {
 .btn-primary-green:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(45, 90, 39, 0.4);
-    background: linear-gradient(135deg, #4a7c59 0%, #2d5a27 100%);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 .btn-outline-green {
     background: transparent;
-    border: 2px solid #2d5a27;
+    border: 2px solid var(--primary-color);
     border-radius: 25px;
     padding: 10px 0;
     font-weight: 600;
     font-size: 1rem;
-    color: #2d5a27;
+    color: var(--primary-color);
     transition: all 0.3s ease;
 }
 
 .btn-outline-green:hover {
-    background: #2d5a27;
+    background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
 }
 
+/*         SOCIAL LOGIN        */
 .social-login {
     margin-top: 25px;
 }
@@ -174,7 +207,7 @@ body {
     color: white;
 }
 
-/* Login Form Styles */
+/*           LOGIN & SIGNUP PAGES */
 .login-section {
     text-align: center;
 }
@@ -182,7 +215,7 @@ body {
 .login-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #2d5a27;
+    color: var(--primary-color);
     margin-bottom: 30px;
 }
 
@@ -190,7 +223,13 @@ body {
     margin-bottom: 20px;
 }
 
-.form-floating .form-control {
+.loginimg {
+    width: 200px;
+    height: 200px;
+}
+
+.form-floating .form-control,
+.form-select {
     border: 2px solid rgba(45, 90, 39, 0.2);
     border-radius: 15px;
     padding: 1rem 0.75rem;
@@ -198,8 +237,9 @@ body {
     transition: all 0.3s ease;
 }
 
-.form-floating .form-control:focus {
-    border-color: #2d5a27;
+.form-floating .form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 0.2rem rgba(45, 90, 39, 0.25);
 }
 
@@ -221,7 +261,7 @@ body {
 }
 
 .forgot-password a:hover {
-    color: #2d5a27;
+    color: var(--primary-color);
 }
 
 .login-illustration {
@@ -241,9 +281,181 @@ body {
     color: rgba(45, 90, 39, 0.5);
 }
 
+/*              HOME PAGE          */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(44, 85, 48, 0.95) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.8), rgba(74, 124, 89, 0.8)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="pollution" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="20" fill="%23333" opacity="0.1"/><rect x="30" y="30" width="40" height="40" fill="%23666" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23pollution)"/></svg>');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(220, 53, 69, 0.3), rgba(255, 193, 7, 0.3));
+    animation: pollutionWave 8s ease-in-out infinite;
+}
+
+@keyframes pollutionWave {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero .btn {
+    animation: fadeInUp 1s ease-out 0.6s both;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Explore-content{
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.Explore p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* card    */
+
+.card {
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.02);
+}
 
 
-/* Responsive Design */
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    z-index: 1000;
+}
+
+.scroll-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--danger-color), var(--warning-color));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* RESPONSIVE */
 @media (max-width: 576px) {
     .phone-container {
         margin: 10px;
@@ -255,11 +467,16 @@ body {
     }
 }
 
-/* Page Switching */
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
 }

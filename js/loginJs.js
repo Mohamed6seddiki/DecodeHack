@@ -1,22 +1,31 @@
 function showLogin() {
     document.getElementById('signUpPage').classList.remove('active');
     document.getElementById('welcomePage').classList.remove('active');
+    document.getElementById('homePage').classList.remove('active');
     document.getElementById('loginPage').classList.add('active');
 }
 
 function showWelcome() {
     document.getElementById('signUpPage').classList.remove('active');
     document.getElementById('loginPage').classList.remove('active');
+    document.getElementById('homePage').classList.remove('active');
     document.getElementById('welcomePage').classList.add('active');
 }
 
 function showSignUp() {
     document.getElementById('welcomePage').classList.remove('active');
     document.getElementById('loginPage').classList.remove('active');
+    document.getElementById('homePage').classList.remove('active');
     document.getElementById('signUpPage').classList.add('active'); 
 }
 
-// Add some interactive animations
+function showHome() {
+    document.getElementById('signUpPage').classList.remove('active');
+    document.getElementById('loginPage').classList.remove('active');
+    document.getElementById('welcomePage').classList.remove('active');
+    document.getElementById('homePage').classList.add('active');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
     stars.forEach((star, index) => {
@@ -34,3 +43,5 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+

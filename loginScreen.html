@@ -26,13 +26,13 @@
                     
                     <div class="welcome-section">
                         <div class="illustration-placeholder">
-                            <i class="fas fa-mobile-alt"></i>
+                            <img src="img/welcome.png" alt="welcome" class="welcome">
                         </div>
                         
                         <h1 class="welcome-title">Hello</h1>
                         <p class="welcome-text">
-                            Welcome To EcoMeal , where<br>
-                            you manage 
+                            Welcome to  Ecomeal a platform <br>
+                            that helps reduce food waste 
                         </p>
                         
                         <div class="d-grid gap-3">
@@ -68,7 +68,7 @@
                     
                     <div class="login-section">
                         <div class="login-illustration">
-                            <i class="fas fa-door-open"></i>
+                            <img src="img/login.png" alt="login" class="loginimg">
                         </div>
                         
                         <h2 class="login-title">Login</h2>
@@ -91,7 +91,7 @@
                             </div>
                             
                             <div class="d-grid gap-3">
-                                <button type="submit" class="btn btn-primary-green">Sign Up</button>
+                                <button type="button" class="btn btn-primary-green" onclick="showHome()">Sign Up</button>
                                 <button type="button" class="btn btn-outline-green" onclick="showWelcome()">Back</button>
                             </div>
                         </form>
@@ -132,6 +132,19 @@
                             </div>
 
                             <div class="form-floating">
+                                <select class="form-select" id="signUpCategory">
+
+                                    <option value="Farmer">Farmer</option>
+                                    <option value="Restaurant">Restaurant</option>
+                                    <option value="Household">Household</option>
+                                    <option value="University Restaurant">University Restaurant</option>
+                                    <option value="Biogas Plant">Biogas Plant</option>
+                                </select>
+                                <label for="signUpCategory">Category</label>
+                            </div>
+
+
+                            <div class="form-floating">
                                 <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
                                 <label for="signUpPassword">Password</label>
                             </div>
@@ -149,7 +162,7 @@
                             </div>
                             
                             <div class="d-grid gap-3">
-                                <button type="submit" class="btn btn-primary-green">Create Account</button>
+                                <button type="button" class="btn btn-primary-green" onclick="showHome()">Create Account</button>
                                 <button type="button" class="btn btn-outline-green" onclick="showWelcome()">Back</button>
                             </div>
                             
@@ -163,9 +176,171 @@
                     </div>
                 </div>
 
+                <!--home page -->
+                <div class="home-container page " id="homePage">
+                        <div class="scroll-indicator">
+                            <div class="scroll-progress" id="scrollProgress"></div>
+                        </div>
+
+                        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                            <div class="container">
+                                <a class="navbar-brand" href="#home">
+                                    <i class="fas fa-leaf me-2"></i>Ecomeal 
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNav">
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#home">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#gallery">Gallery</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#Explore">Explore</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#tips">About</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+
+                             <!-- Hero Section -->
+                    <section id="home" class="hero py-10">
+                        <div class="hero-content">
+                            <img src="img/done.png" alt="done" class="w-50 m-4">
+                            <h1>Welcome to  Ecomeal a platform that helps reduce food waste</h1>
+                            <p> by connecting people who have extra food with those who need it. Together, we can save meals, help others, and protect the environment.</p>
+                        </div>
+                    </section>
+
+                       <!-- garllery--> 
+
+                    <section id="gallery" class="gallery py-10">
+                        <div id="slide" class="carousel slide container w-75" data-bs-ride="carousel">
+
+                            <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#slide" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#slide" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#slide" data-bs-slide-to="2"></button>
+                            </div>
+
+                            <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/give.png" class="d-block w-100 w-md-75 w-lg-50" alt="erro">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/login.png" class="d-block w-100 w-md-75 w-lg-50" alt="erro">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/logout.png" class="d-block w-100 w-md-75 w-lg-50" alt="erro">
+                            </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slide" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#slide" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class=" Explore py-10">
+                        <div class="Explore-content d-flex flex-column">
+                            <p>Every day, tons of perfectly good food are thrown away. Our mission is to give that food a second life.<br> 
+                                Whether you’re a restaurant, bakery, home cook, or just someone with leftovers — you can share it here instead of throwing it away.</p><br>
+                        </div>
+                    </section>
+
+                    <!-- Explore parte-->
+
+                    <section class="Explore" id="Explore">
+                        <section class="card1 py-10">
+                            <div class="container mt-4">
+                                <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card shadow-sm h-100">
+                                                <img src="~/images/waste.jpg" class="card-img-top" alt="Organic Waste Image" style="height: 200px; object-fit: cover;" />
+                                                
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@ad.WasteType (@ad.QuantityKg كغ)</h5>
+                                                    <p class="card-text text-muted">@ad.Description</p>
+
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>📍 الموقع:</strong> @ad.Location</li>
+                                                        <li><strong>🕒 وقت الجمع:</strong> @ad.PickupTime.ToString("yyyy-MM-dd HH:mm")</li>
+                                                    </ul>
+
+                                                    <a href="#" class="btn btn-sm btn-success mt-2">احجز الجمع</a>
+                                                </div>
+
+                                                <div class="card-footer text-muted text-end">
+                                                    نُشر بتاريخ @ad.CreatedAt.ToString("yyyy-MM-dd")
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card shadow-sm h-100">
+                                                <img src="~/images/waste.jpg" class="card-img-top" alt="Organic Waste Image" style="height: 200px; object-fit: cover;" />
+                                                
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@ad.WasteType (@ad.QuantityKg كغ)</h5>
+                                                    <p class="card-text text-muted">@ad.Description</p>
+
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>📍 الموقع:</strong> @ad.Location</li>
+                                                        <li><strong>🕒 وقت الجمع:</strong> @ad.PickupTime.ToString("yyyy-MM-dd HH:mm")</li>
+                                                    </ul>
+
+                                                    <a href="#" class="btn btn-sm btn-success mt-2">احجز الجمع</a>
+                                                </div>
+
+                                                <div class="card-footer text-muted text-end">
+                                                    نُشر بتاريخ @ad.CreatedAt.ToString("yyyy-MM-dd")
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card shadow-sm h-100">
+                                                <img src="~/images/waste.jpg" class="card-img-top" alt="Organic Waste Image" style="height: 200px; object-fit: cover;" />
+                                                
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@ad.WasteType (@ad.QuantityKg كغ)</h5>
+                                                    <p class="card-text text-muted">@ad.Description</p>
+
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>📍 الموقع:</strong> @ad.Location</li>
+                                                        <li><strong>🕒 وقت الجمع:</strong> @ad.PickupTime.ToString("yyyy-MM-dd HH:mm")</li>
+                                                    </ul>
+
+                                                    <a href="#" class="btn btn-sm btn-success mt-2">احجز الجمع</a>
+                                                </div>
+
+                                                <div class="card-footer text-muted text-end">
+                                                    نُشر بتاريخ @ad.CreatedAt.ToString("yyyy-MM-dd")
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    
+                
+                </div>
             </div>
         </div>
     </div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="js/loginJs.js"></script>
