@@ -1,3 +1,4 @@
+
 function showLogin() {
     document.getElementById('signUpPage').classList.remove('active');
     document.getElementById('welcomePage').classList.remove('active');
