@@ -1,4 +1,4 @@
-// ======= عرض الصفحات =======
+
 function showLogin() {
     document.getElementById('signUpPage').classList.remove('active');
     document.getElementById('welcomePage').classList.remove('active');
@@ -27,7 +27,6 @@ function showHome() {
     document.getElementById('homePage').classList.add('active');
 }
 
-// ======= إضافة بطاقة جديدة وإرسالها إلى API =======
 document.getElementById("cardForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -93,7 +92,6 @@ document.getElementById("cardForm").addEventListener("submit", function (e) {
     reader.readAsDataURL(file);
 });
 
-// ======= تحميل البطاقات من API عند تشغيل الصفحة =======
 window.onload = async function() {
     const response = await fetch("http://localhost:3000/api/cards");
 
@@ -122,7 +120,6 @@ window.onload = async function() {
     });
 };
 
-// ======= تحريك النجوم (twinkle animation) =======
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
     stars.forEach((star, index) => {
