@@ -1,4 +1,4 @@
-
+// ======= عرض الصفحات =======
 function showLogin() {
     document.getElementById('signUpPage').classList.remove('active');
     document.getElementById('welcomePage').classList.remove('active');
@@ -26,8 +26,8 @@ function showHome() {
     document.getElementById('welcomePage').classList.remove('active');
     document.getElementById('homePage').classList.add('active');
 }
-/*adding new card*/
- 
+
+// ======= إضافة بطاقة جديدة وإرسالها إلى API =======
 document.getElementById("cardForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -37,49 +37,91 @@ document.getElementById("cardForm").addEventListener("submit", function (e) {
     const file = imageInput.files[0];
 
     if (!file) {
-        alert("Please select an immge .");
+        alert("Please select an image.");
         return;
     }
 
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = async function(event) {
         const imageUrl = event.target.result;
-
         const now = new Date();
         const formattedDate = now.toISOString().split('T')[0];
 
-        const newCard = `
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <img src="${imageUrl}" class="mx-auto d-block mt-3" style="width: 120px; height: 120px; object-fit: cover;" alt=" eroo">
-                    <div class="card-body">
-                        <h5 class="card-title"> </h5>
-                        <p class="card-text text-muted">${description}</p>
-                        <ul class="list-unstyled">
-                            <li><strong>📍 Location:</strong> ${location}</li>
-                        </ul>
-                        <a href="#" class="btn btn-sm btn-success mt-2"> Book now</a>
-                    </div>
-                    <div class="card-footer text-muted text-end">
-                         Published ${formattedDate}
+        // إرسال البطاقة إلى API
+        const response = await fetch("http://localhost:3000/api/cards", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                location,
+                description,
+                imageBase64: imageUrl,
+                date: formattedDate
+            })
+        });
+
+        if (response.ok) {
+            const newCard = `
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100 text-center">
+                        <img src="${imageUrl}" class="mx-auto d-block mt-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Image">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text text-muted">${description}</p>
+                            <ul class="list-unstyled">
+                                <li><strong>📍 Location:</strong> ${location}</li>
+                            </ul>
+                            <a href="#" class="btn btn-sm btn-success mt-2">Book now</a>
+                        </div>
+                        <div class="card-footer text-muted text-end">
+                            Published ${formattedDate}
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
 
-        document.getElementById("cardsRow").insertAdjacentHTML('beforeend', newCard);
+            document.getElementById("cardsRow").insertAdjacentHTML('beforeend', newCard);
 
-        document.getElementById("cardForm").reset();
-        const modal = bootstrap.Modal.getInstance(document.getElementById('addCardModal'));
-        modal.hide();
+            document.getElementById("cardForm").reset();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addCardModal'));
+            modal.hide();
+        } else {
+            alert("فشل في إرسال البيانات إلى السيرفر.");
+        }
     };
 
     reader.readAsDataURL(file);
 });
 
+// ======= تحميل البطاقات من API عند تشغيل الصفحة =======
+window.onload = async function() {
+    const response = await fetch("http://localhost:3000/api/cards");
+    const cards = await response.json();
 
+    cards.forEach(card => {
+        const cardHtml = `
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <img src="${card.imageBase64}" class="mx-auto d-block mt-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text text-muted">${card.description}</p>
+                        <ul class="list-unstyled">
+                            <li><strong>📍 Location:</strong> ${card.location}</li>
+                        </ul>
+                        <a href="#" class="btn btn-sm btn-success mt-2">Book now</a>
+                    </div>
+                    <div class="card-footer text-muted text-end">
+                        Published ${card.date}
+                    </div>
+                </div>
+            </div>
+        `;
+        document.getElementById("cardsRow").insertAdjacentHTML('beforeend', cardHtml);
+    });
+};
 
+// ======= تحريك النجوم (twinkle animation) =======
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
     stars.forEach((star, index) => {
@@ -88,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add CSS animation for stars dynamically
 const style = document.createElement('style');
 style.textContent = `
     @keyframes twinkle {
@@ -97,5 +138,3 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-
