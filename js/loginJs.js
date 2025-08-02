@@ -48,8 +48,7 @@ document.getElementById("cardForm").addEventListener("submit", function (e) {
         const now = new Date();
         const formattedDate = now.toISOString().split('T')[0];
 
-        // إرسال البطاقة إلى API
-        const response = await fetch("http://localhost:3000/api/cards", {
+            const response = await fetch("https://decodehack.onrender.com/api/cards", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -95,7 +94,7 @@ document.getElementById("cardForm").addEventListener("submit", function (e) {
 
 // ======= تحميل البطاقات من API عند تشغيل الصفحة =======
 window.onload = async function() {
-    const response = await fetch("http://localhost:3000/api/cards");
+    const response = await fetch("https://decodehack.onrender.com/api/cards");
     const cards = await response.json();
 
     cards.forEach(card => {
