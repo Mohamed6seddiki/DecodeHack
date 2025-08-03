@@ -81,7 +81,7 @@ DecodeHack/
 
 ## 🧠 Team
 
-Built with ❤️ by Mohamed Seddiki and team during a hackathon.
+Built with ❤️ by Mohamed Seddiki and team of RMMA CREW  during a hackathon.
 
 ## 📜 License
 
